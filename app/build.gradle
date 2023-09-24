@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+}
+
+def identityPropsFile = rootProject.file("identity.properties")
+def identityProps = new Properties()
+identityProps.load(new FileInputStream(identityPropsFile))
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.ivlaptev.myapplication"
+        minSdk 28
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "CLIENT_ID", identityProps['CLIENT_ID'])
+        buildConfigField("String", "CLIENT_SECRET", identityProps['CLIENT_SECRET'])
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "CLIENT_ID", identityProps['CLIENT_ID'])
+            buildConfigField("String", "CLIENT_SECRET", identityProps['CLIENT_SECRET'])
+        }
+
+        debug {
+            buildConfigField("String", "CLIENT_ID", identityProps['CLIENT_ID'])
+            buildConfigField("String", "CLIENT_SECRET", identityProps['CLIENT_SECRET'])
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+        buildFeatures {
+            buildConfig true
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+//    Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+//    Crypto
+    implementation "androidx.security:security-crypto:1.0.0-alpha02"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
