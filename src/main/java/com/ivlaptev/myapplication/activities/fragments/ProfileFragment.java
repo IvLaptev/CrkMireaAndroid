@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +18,6 @@ import android.widget.TextView;
 import com.ivlaptev.myapplication.R;
 import com.ivlaptev.myapplication.data.services.CkmireaService;
 import com.ivlaptev.myapplication.models.UserinfoResponse;
-import com.ivlaptev.myapplication.shared.PermanentRedirect;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,7 +72,8 @@ public class ProfileFragment extends Fragment {
                 middlename.setText(userinfo.middlename);
                 lastname.setText(userinfo.lastname);
             } else {
-                PermanentRedirect.toLoginActivity(getContext());
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_logout);
             }
         }
 

@@ -1,6 +1,8 @@
 package com.ivlaptev.myapplication.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -10,7 +12,6 @@ import com.ivlaptev.myapplication.R;
 import com.ivlaptev.myapplication.data.services.CkmireaService;
 import com.ivlaptev.myapplication.data.services.DbHelper;
 import com.ivlaptev.myapplication.models.articles.ArticleCompact;
-import com.ivlaptev.myapplication.shared.PermanentRedirect;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +51,8 @@ public class ArticleActivity extends AppCompatActivity {
                 articleView.setText(Html.fromHtml(article.getContent(), Html.FROM_HTML_MODE_COMPACT));
                 dbHelper.updateArticle(article);
             } else {
-                PermanentRedirect.toMainActivity(ArticleActivity.this);
+                NavController navController = Navigation.findNavController(ArticleActivity.this, R.id.nav_host_fragment);
+                navController.navigate(R.id.action_logout);
             }
         }
 

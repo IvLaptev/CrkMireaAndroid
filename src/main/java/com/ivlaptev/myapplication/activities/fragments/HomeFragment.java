@@ -1,14 +1,14 @@
 package com.ivlaptev.myapplication.activities.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,22 +16,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ivlaptev.myapplication.R;
-import com.ivlaptev.myapplication.activities.ArticleActivity;
-import com.ivlaptev.myapplication.activities.LoginActivity;
-import com.ivlaptev.myapplication.activities.MainActivity;
 import com.ivlaptev.myapplication.data.services.CkmireaService;
 import com.ivlaptev.myapplication.data.services.DbHelper;
 import com.ivlaptev.myapplication.data.services.EncryptedStore;
 import com.ivlaptev.myapplication.models.UserinfoResponse;
 import com.ivlaptev.myapplication.models.articles.ArticleCompact;
 import com.ivlaptev.myapplication.models.articles.ArticleCompactList;
-import com.ivlaptev.myapplication.shared.PermanentRedirect;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -64,7 +57,9 @@ public class HomeFragment extends Fragment {
         Context context = getContext();
         getView().findViewById(R.id.logout_btn).setOnClickListener(clickedView -> {
             EncryptedStore.getInstance(context).clear();
-            PermanentRedirect.toLoginActivity(getContext());
+
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_logout);
         });
 
         LinearLayoutManager layoutManager =
@@ -85,7 +80,8 @@ public class HomeFragment extends Fragment {
                 Resources res = getResources();
                 tv.setText(res.getString(R.string.welcome, response.body().firstname));
             } else {
-                PermanentRedirect.toLoginActivity(getContext());
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_logout);
             }
         }
 
@@ -106,7 +102,8 @@ public class HomeFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
                 dbHelper.insertArticles(articles);
             } else {
-                PermanentRedirect.toLoginActivity(getContext());
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_logout);
             }
         }
 

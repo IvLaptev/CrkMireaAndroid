@@ -12,9 +12,7 @@ import com.ivlaptev.myapplication.models.articles.ArticleCompact;
 import com.ivlaptev.myapplication.models.articles.Author;
 import com.ivlaptev.myapplication.models.articles.Category;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

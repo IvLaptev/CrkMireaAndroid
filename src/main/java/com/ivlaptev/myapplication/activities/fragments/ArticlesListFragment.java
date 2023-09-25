@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +19,6 @@ import com.ivlaptev.myapplication.data.services.CkmireaService;
 import com.ivlaptev.myapplication.data.services.DbHelper;
 import com.ivlaptev.myapplication.models.articles.ArticleCompact;
 import com.ivlaptev.myapplication.models.articles.ArticleCompactList;
-import com.ivlaptev.myapplication.shared.PermanentRedirect;
 
 import java.util.List;
 
@@ -67,7 +68,8 @@ public class ArticlesListFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
                 dbHelper.insertArticles(articles);
             } else {
-                PermanentRedirect.toLoginActivity(getContext());
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_logout);
             }
         }
 

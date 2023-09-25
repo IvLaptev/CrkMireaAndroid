@@ -7,7 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.ivlaptev.myapplication.BuildConfig;
 import com.ivlaptev.myapplication.data.CkmireaIdentityAPI;
 import com.ivlaptev.myapplication.models.TokenResponse;
-import com.ivlaptev.myapplication.models.UserCredentials;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
