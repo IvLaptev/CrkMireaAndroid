@@ -1,6 +1,19 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">ЦРК МИРЭА</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_text">Что будем изучать сегодня?</string>
+    <string name="login_welcome">Добро пожаловать</string>
+    <string name="login_long_title">Центр развития компетенций и\n надпрофессиональных навыков</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="welcome">Привет, %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_title">Профиль</string>
+    <string name="profile_email_title">Почта</string>
+    <string name="profile_username_title">Имя пользователя</string>
+    <string name="profile_name_title">Имя</string>
+    <string name="profile_middlename_title">Отчество</string>
+    <string name="profile_lastname_title">Фамилия</string>
 </resources>

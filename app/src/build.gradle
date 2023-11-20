@@ -1,7 +1,6 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.application' version '7.2.1'
 }
-
 def identityPropsFile = rootProject.file("identity.properties")
 def identityProps = new Properties()
 identityProps.load(new FileInputStream(identityPropsFile))

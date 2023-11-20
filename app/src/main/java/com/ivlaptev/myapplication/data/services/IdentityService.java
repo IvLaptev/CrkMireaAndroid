@@ -7,7 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.ivlaptev.myapplication.BuildConfig;
 import com.ivlaptev.myapplication.data.CkmireaIdentityAPI;
 import com.ivlaptev.myapplication.models.TokenResponse;
-import com.ivlaptev.myapplication.models.UserCredentials;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -41,11 +40,9 @@ public class IdentityService {
     }
 
     public Call<TokenResponse> login(String login, String password) {
-        UserCredentials user = EncryptedStore.getInstance(null).getUser();
-
         return identityAPI.login(
-                user.login,
-                user.password,
+                login,
+                password,
                 "password",
                 BuildConfig.CLIENT_ID,
                 BuildConfig.CLIENT_SECRET

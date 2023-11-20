@@ -26,6 +26,7 @@ import com.ivlaptev.myapplication.models.UserinfoResponse;
 import com.ivlaptev.myapplication.models.articles.ArticleCompact;
 import com.ivlaptev.myapplication.models.articles.ArticleCompactList;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -96,14 +97,22 @@ public class HomeFragment extends Fragment {
         public void onResponse(Call<ArticleCompactList> call, Response<ArticleCompactList> response) {
             if (response.isSuccessful()) {
                 List<ArticleCompact> articles = response.body().getResults();
+                    Log.i("TAG", String.valueOf(articles.toArray().length));
+
+                Log.i("TAG", "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
                 RecyclerView recyclerView = getView().findViewById(R.id.popular_articles_list);
                 ArticlesStateAdapter adapter = new ArticlesStateAdapter(getContext(), articles, getActivity());
                 recyclerView.setAdapter(adapter);
                 dbHelper.insertArticles(articles);
             } else {
+                try {
+                    Log.i("TAG", response.errorBody().string());
+                } catch (IOException e) {
+                }
+                Log.i("TAG", "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                navController.navigate(R.id.action_logout);
+//                navController.navigate(R.id.action_logout);
             }
         }
 

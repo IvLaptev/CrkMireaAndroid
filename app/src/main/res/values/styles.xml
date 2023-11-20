@@ -15,6 +15,18 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="h2">
+        <item name="fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="article">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="light_text">
         <item name="fontFamily">@font/hind_madurai_light</item>
         <item name="android:textColor">@color/light_text</item>
@@ -34,5 +46,10 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/montserrat_semibold</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="rounded_image">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
     </style>
 </resources>

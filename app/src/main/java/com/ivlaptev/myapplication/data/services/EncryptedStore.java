@@ -49,4 +49,11 @@ public class EncryptedStore {
         sharedPreferences.edit().putString("accessToken", user.accessToken).apply();
         sharedPreferences.edit().putString("refreshToken", user.refreshToken).apply();
     }
+
+    public void clear() {
+        sharedPreferences.edit().putString("login", null).apply();
+        sharedPreferences.edit().putString("password", null).apply();
+        sharedPreferences.edit().putString("accessToken", null).apply();
+        sharedPreferences.edit().putString("refreshToken", null).apply();
+    }
 }

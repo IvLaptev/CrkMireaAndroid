@@ -8,7 +8,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface CkmireaIdentityAPI {
-    String BASE_URL = "https://identity.ckmirea.rtuitlab.dev/";
+    String BASE_URL = "https://yc.mirea.ru/";
 
     @FormUrlEncoded
     @POST("realms/master/protocol/openid-connect/token")
